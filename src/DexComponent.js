@@ -19,7 +19,6 @@ import { useEthersProvider, useEthersSigner } from './ethers'
 import liquidityABI from './liquidity.json';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
-import SwapVertIcon from '@mui/icons-material/SwapVert';
 
 function CustomTabPanel(props) {
     const { children, value, index, setTotalLiquidity, ...other } = props;
@@ -168,7 +167,7 @@ const DexComponent = () => {
             console.log('swapping TokenAmount : ',tokenAmount)
             const amountETH = await routerContract.swapExactTokensForETH(ethers.utils.parseUnits(tokenAmount, 'ether'), 0, [token1Address, token2Address], address, deadline)
             console.log('Swapped amountETH : ' + amountETH[0])
-            // handleReserve()
+            handleReserve()
             handlePoolAmount()
           } catch (error) {
             console.error('Error swap ETH:', error);
